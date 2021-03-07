@@ -1,0 +1,9 @@
+s="poyotohon"
+print(s[2])
+print(s[-4])
+#print(s[10])
+print(s.index("o"))
+print(s.rindex("o"))
+#print(s.index("z"))
+print(s.find("o"))
+print(s.find("z"))

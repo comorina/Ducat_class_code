@@ -1,0 +1,6 @@
+print("hi"+"hello")
+print("hello"*3)
+print(3*"hello")
+print(0*"hello")
+print("rohit">"virat")
+print("sonu">"soni")
