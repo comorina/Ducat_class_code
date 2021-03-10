@@ -1,0 +1,36 @@
+data structure:
+---------------
+	>it manages individual elements as single
+unit.
+	>a variable of ds type may contain 0-N values.
+	>in python,mostly data structures are dynamic in size.
+
+	>Basic data structure
+		>list
+		>tuple
+		>set
+		>frozenset
+		>dict
+		
+	>Advanced data structure
+		>Numpy Array
+		>Pandas Series
+		>Pandas DataFrame
+
+list:
+-----
+	>it is a group of values that supports indexing,duplicacy.
+
+	>it maintains order of values
+	>it is iterable
+	>it is mutable(modifiable).
+
+syntax:
+-------
+	var=[value1,value2,.....]
+	var=list()
+	etc.
+
+
+
+
