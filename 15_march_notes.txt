@@ -1,0 +1,10 @@
+Types of Parameters/arguments:
+------------------------------
+	>Positional Arguments
+	>keyword Arguments
+	>Default Arguments
+	>Non default parameters
+	>keywords Arbitrary Parameters
+	>Positional Arbitrary Parameters
+	>Positional Only Parameters
+	>keyword only Parameters

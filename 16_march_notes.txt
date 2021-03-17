@@ -1,0 +1,60 @@
+return stmt in function:
+------------------------
+	>it is used to return the result of function to the
+calling statement.
+
+	>conceptually it shud be the last stmt in fun.
+
+syntax:
+	def fun_name():
+	..
+	..
+	return val/var/exp
+
+	>a function may return multiple values in the form of list/tuple/set/dict...
+
+	>function gets terminated after executing first return stmt.
+
+	>if we do not write return stmt explicitly,python automatically returns None.
+
+	>return type of function is dynamically decided by
+language itself based on return value.
+
+Local & Global variables:
+-------------------------
+	>A variable is said to be local if it is initialized inside function block.
+
+	>local var can not be used outside it's function block(scope).
+
+	>A variable is said to be global if it initialized outside function.
+
+	>bydefault,global var can be used by function in read mode and if fun try to modify it's value ,it is considered as new local var of this fun.
+
+	>if you want to modify global var inside fun,declare it using global keyword then modify.
+
+exp:
+	x=10
+	def fun()
+	   x=20  #new local
+
+
+	x=10
+	def fun()
+	  global x
+	  x=20  #modify global x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
