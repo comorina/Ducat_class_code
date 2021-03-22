@@ -1,0 +1,60 @@
+Script & Module:
+----------------
+	>A self executable python program is known as script.
+
+	>if a program is used by other programs,it is known as module.
+
+	>it means,in python library is a set of modules.
+
+	>if a module is executed independently ,python provides a special variable __name__ with value "__main__".
+stmts written as part of __name__ var are not imported.
+
+	...
+	...
+	...
+	if(__name__=="__main__"):
+		..
+		..
+		..
+
+__name__:
+	>it is a special variable provided by Interpreter and it may contain one of the following two values:
+	1. __main__ if code is executed as script
+	2. module name if code is imported as module
+
+Syntax of import:
+-----------------
+	import modulename
+	modulename.fun()
+
+	import modulename as alias
+	alias.fun()
+
+	from modulename import fun
+	fun()
+
+	from modulename import fun as alias
+	alias()
+
+	from modulename import * (all var & fun)
+	fun()
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+

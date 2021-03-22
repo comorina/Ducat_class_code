@@ -1,0 +1,58 @@
+Package:
+--------
+	>it is group of similar type of modules
+	>provide easy maintenance of modules
+	>provide identity of modules
+	>physically, a package is simply represented by
+folder. 
+
+library:	group of modules & packages
+--------
+(a.k.a. API (Application Programming Interface))
+
+
+Framework:	group of library
+----------
+
+Commonly used standard modules & packages:
+------------------------------------------
+>math
+>random
+>os
+>sys
+>builtins
+>datetime
+>calendar
+>shutil
+>io
+etc.
+Commonly used 3rd party modules & packages:
+------------------------------------------
+>numpy
+>pandas
+>scipy
+>statistics
+>matplotlib
+>seaborn
+>sklearn
+>tensorflow
+>django
+>wikipedia
+>pytube
+etc.
+etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

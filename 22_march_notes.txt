@@ -1,0 +1,91 @@
+Errors in Python:
+-----------------
+	>Syntax/Parsing Errors
+		>due to invalid syntax
+	>Exceptions
+		>due to unsupported operation
+		>due to lack of resources(var/memory/connection/file/module/....)
+
+>An exception is an unwanted event/action/situation that occurs during execution of stmts.
+
+>occurence of such event terminates the program abnormally.
+
+Commonly Used Exceptions:
+-------------------------
+>IndexError:	use of invalid index
+>ValueError:	invalid type conversion
+>TypeError:	invalid usage of value in an operation
+>keyError:	use of invalid key in dict
+>NameError:	variable/function not found
+etc.
+
+Exception Handling:
+-------------------
+>it is technique to avoid abnormal program termination by
+executing alternate stmts.
+
+>python provides following keywords to implement E.H.
+	>try
+	>except
+	>finally
+	>raise
+	>assert
+
+try:
+----
+	>it contains those set of stmts(logically related) whose execution may generate exception.
+
+	>after try block we must use either except or finally block.
+
+Possible combination of try/except:
+-----------------------------------
+	try:
+	..
+        except SpecificException:
+	..
+
+	try:
+	..
+	except(Exp1,Exp2,...):
+	..
+
+	try:
+	..
+	except Exception:	#parent exception
+	..
+
+	try:
+	..
+	except:			#default
+	..
+Note:
+>Exception(parent) can not handle KeyboardInterrupt & StopIteration but default except can handle any exception.
+
+>default except must be last handler of try.
+
+>those stmts of try are never executed that occur after execption.
+
+
+
+
+	
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

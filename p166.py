@@ -1,0 +1,10 @@
+import math
+#help(math)
+print(math.pi)
+print(math.factorial(5))
+print(math.sqrt(16))
+print(math.sqrt(346))
+print(math.log(10))#base e (Natural log)
+#help(math.log)
+print(math.log10(10))
+print(math.log2(10))
