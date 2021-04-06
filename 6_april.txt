@@ -1,0 +1,55 @@
+Generator:
+----------
+	>it is a function that generates values and can be used 
+in for loop like range().
+
+	>in generator function we use yield keyword instead of
+return. 
+
+Object Oriented Programming Structure
+(OOP)/(OOPS)
+--------------------------------------
+	>Object
+	>Class
+	>Inheritance
+	>Encapsulation	
+	>Polymorphism
+	etc.
+
+Object:
+-------
+	>any real world entity(physical or logical) is known as
+object.
+	exp:human,chair,table,account,dept,mango,mobile,...
+
+	>each object has it's own data members & behaviours
+		exp:
+		human--->object
+			data members:name,gender,dob
+			behaviours:eating,sleeping,thinking
+		account-->object
+			data members: acn,type,bal
+			behaviours:deposit,withdraw
+
+	>from memory point of view,object is a dynamically allocated
+block.
+
+	>in coding,object is an instance of a class.
+
+class:
+	>A class is a blueprint/template/design/specification
+ to create similar objects.
+
+	>In python,a class also represents a data type.
+
+
+
+
+
+
+
+
+
+
+
+
