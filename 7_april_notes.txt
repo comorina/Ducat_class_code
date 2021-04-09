@@ -1,0 +1,35 @@
+syntax to create class:
+-----------------------
+class classname:
+  stmts
+
+syntax to create object:
+------------------------
+	classname()
+	or
+	refvar=classname()
+
+Note:There are some lib classes that can be instantiated using 
+literals/symbols,like int,float,list,dict,tuple,....
+
+	exp:
+	int is a lib class and it can be instantiated like
+	i=int()   standard way
+	i=10      literal way
+
+Object Initialization:
+----------------------
+>it is a process of adding data members to object just 
+after creating it.
+
+>constructor is used to initialize object.
+
+>in python,constructor is a special method represented by
+__init__() and it is executed by python itself whenever an object 
+is created of that class.
+
+
+
+
+
+
