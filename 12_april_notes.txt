@@ -1,0 +1,21 @@
+Polymorphism:
+-------------
+	Poly------>many(more than one)
+	morphism-->forms/roles
+
+>it is the ability of an entity to represent multiple
+forms/roles in different context.
+
+entity:
+	variable/method/object/operator/etc..
+
+Advantage:
+	>we need not to remember too many names to perform
+similar operations.
+
+Implementation:
+---------------
+	>method overriding    (inheritance)
+	>operator overloading
+	>polymorphic method call
+

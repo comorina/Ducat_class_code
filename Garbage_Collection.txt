@@ -1,0 +1,21 @@
+>It is a techique to free the memory of unreachable objects 
+
+>in python,it is automatically done by garbage collector(integral part of interpreter),hence the name Automatic Garbage Collection.
+
+>whenever object is going to destroy by gc, __del__() is executed on object and we may override this method to perform any cleanup action on object.
+
+>__del__() is originally defined on object class.
+
+>there are following situations when object becomes eligible for garbage colllection
+	>obj=None
+	>obj=other object
+	>del obj
+
+>python also provides gc module to enable,disable gc.
+import gc
+gc.enable()
+gc.disable()
+
+>Note:gc is a time consuming process,so it is not guaranteed to run gc each time when object becomes eligible.
+
+  
