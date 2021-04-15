@@ -1,0 +1,48 @@
+Inheritance:
+------------
+	>it is a process of defining a new class by reusing 
+behaviour of existing class(es).
+
+		or
+
+	>it is the process of class extension without modifying it.
+
+	>exising class is known as parent/super/base and newly 
+created class is known as child/sub/derived class.
+
+syntax:
+-------
+	class classname(exising classname):
+		stmts
+
+
+types of inheritance:
+---------------------
+	>single level
+	>multi level
+	>multiple
+	>hybrid(multiple+multi level)
+	>hierarchical 
+
+Method Resolution Order(MRO):
+-----------------------------
+	obj.method() #child-->first parent-->second-->.....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
