@@ -1,0 +1,13 @@
+from tkinter import *
+top=Tk()
+top.geometry('500x500')
+top.title('writer')
+var=StringVar()
+var.set('yes')
+Label(text='What would u like to have?',justify=LEFT,font=20,pady=20).pack()
+radio=Checkbutton(text='dosa',variable=var,value='dosa').pack()
+radio=Checkbutton(text='bada',variable=var,value='bada').pack()
+radio=Checkbutton(text='idli',variable=var,value='idli').pack()
+radio=Checkbutton(text='uttapam',variable=var,value='uttapam').pack()
+radio=Checkbutton(text='upma',variable=var,value='upma').pack()
+top.mainloop()
