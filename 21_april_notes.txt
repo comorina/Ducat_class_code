@@ -1,0 +1,211 @@
+database:
+---------
+	>it is organized collection of related data.(generally in the form of tables.) 
+
+
+
+(R)DBMS:
+--------
+	>it is a s/w that provides facility to create & manage databases.
+		
+		>IBM		DB2
+		>Microsoft	SQLServer
+		>Oracle		Oracle DBMS
+		>Sun(Oracle)	MySQL
+		>etc.
+
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.23 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use 10to1130;
+Database changed
+mysql> create table student(roll int,name varchar(10),marks int);
+Query OK, 0 rows affected (0.85 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| marks | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> insert into student values(501,'sonu',650);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into student(name,marks,roll) values('monu',700,101);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into student values(201,'ajay');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student(roll,name) values(201,'ajay');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select name from student;
++------+
+| name |
++------+
+| sonu |
+| monu |
+| ajay |
++------+
+3 rows in set (0.03 sec)
+
+mysql> select name,roll from student;
++------+------+
+| name | roll |
++------+------+
+| sonu |  501 |
+| monu |  101 |
+| ajay |  201 |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> select roll,name from student;
++------+------+
+| roll | name |
++------+------+
+|  501 | sonu |
+|  101 | monu |
+|  201 | ajay |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student;
++------+------+-------+
+| roll | name | marks |
++------+------+-------+
+|  501 | sonu |   650 |
+|  101 | monu |   700 |
+|  201 | ajay |  NULL |
++------+------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values(501,'pintu',750);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from student;
++------+-------+-------+
+| roll | name  | marks |
++------+-------+-------+
+|  501 | sonu  |   650 |
+|  101 | monu  |   700 |
+|  201 | ajay  |  NULL |
+|  501 | pintu |   750 |
++------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table student(roll int,name varchar(10),marks int);
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> drop table student;
+Query OK, 0 rows affected (0.70 sec)
+
+mysql> create table student(roll int primary key,name varchar(10),marks int);
+Query OK, 0 rows affected (0.39 sec)
+
+mysql> insert into student values(501,'sonu',650);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into student values(101,'monu',750);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into student values(101,'chintu',550);
+ERROR 1062 (23000): Duplicate entry '101' for key 'student.PRIMARY'
+mysql> insert into student values(201,'chintu',550);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from student;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|  101 | monu   |   750 |
+|  201 | chintu |   550 |
+|  501 | sonu   |   650 |
++------+--------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student order by marks asc;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|  201 | chintu |   550 |
+|  501 | sonu   |   650 |
+|  101 | monu   |   750 |
++------+--------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student order by marks desc;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|  101 | monu   |   750 |
+|  501 | sonu   |   650 |
+|  201 | chintu |   550 |
++------+--------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student order by marks;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|  201 | chintu |   550 |
+|  501 | sonu   |   650 |
+|  101 | monu   |   750 |
++------+--------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values(201,'pintu',650);
+ERROR 1062 (23000): Duplicate entry '201' for key 'student.PRIMARY'
+mysql> insert into student values(104,'pintu',650);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from student order by marks asc;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|  201 | chintu |   550 |
+|  104 | pintu  |   650 |
+|  501 | sonu   |   650 |
+|  101 | monu   |   750 |
++------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student order by marks,name asc;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|  201 | chintu |   550 |
+|  104 | pintu  |   650 |
+|  501 | sonu   |   650 |
+|  101 | monu   |   750 |
++------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student values(204,'ajay',650);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from student order by marks,name asc;
++------+--------+-------+
+| roll | name   | marks |
++------+--------+-------+
+|  201 | chintu |   550 |
+|  204 | ajay   |   650 |
+|  104 | pintu  |   650 |
+|  501 | sonu   |   650 |
+|  101 | monu   |   750 |
++------+--------+-------+
+5 rows in set (0.01 sec)
+
+mysql>

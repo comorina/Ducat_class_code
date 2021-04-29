@@ -1,0 +1,790 @@
+mysql: [Warning] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe: ignoring option '--no-beep' due to invalid value ''.
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use 10to1130;
+Database changed
+mysql> select * from emp;
++-------+------+-------+
+| empid | name | sal   |
++-------+------+-------+
+|     1 | a    | 10000 |
+|     2 | b    | 20000 |
+|   100 | b    | 20000 |
+|   101 | d    | 22000 |
+|   500 | d    | 22000 |
++-------+------+-------+
+5 rows in set (0.61 sec)
+
+mysql> insert into emp values(201,'jadeja',50000);
+Query OK, 1 row affected (0.50 sec)
+
+mysql> insert into emp values(202,'dhoni',55000);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into emp values(203,'virat',45000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from emp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select char_length(name) from emp;
++-------------------+
+| char_length(name) |
++-------------------+
+|                 1 |
+|                 1 |
+|                 1 |
+|                 1 |
+|                 6 |
+|                 5 |
+|                 5 |
+|                 1 |
++-------------------+
+8 rows in set (0.07 sec)
+
+mysql> select char_length(name),name from emp;
++-------------------+--------+
+| char_length(name) | name   |
++-------------------+--------+
+|                 1 | a      |
+|                 1 | b      |
+|                 1 | b      |
+|                 1 | d      |
+|                 6 | jadeja |
+|                 5 | dhoni  |
+|                 5 | virat  |
+|                 1 | d      |
++-------------------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select char_length(name) as length,name from emp;
++--------+--------+
+| length | name   |
++--------+--------+
+|      1 | a      |
+|      1 | b      |
+|      1 | b      |
+|      1 | d      |
+|      6 | jadeja |
+|      5 | dhoni  |
+|      5 | virat  |
+|      1 | d      |
++--------+--------+
+8 rows in set (0.07 sec)
+
+mysql> select char_length(name) as length,name as emp_name from emp;
++--------+----------+
+| length | emp_name |
++--------+----------+
+|      1 | a        |
+|      1 | b        |
+|      1 | b        |
+|      1 | d        |
+|      6 | jadeja   |
+|      5 | dhoni    |
+|      5 | virat    |
+|      1 | d        |
++--------+----------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select concat(empid,sal) from emp;
++-------------------+
+| concat(empid,sal) |
++-------------------+
+| 110000            |
+| 220000            |
+| 10020000          |
+| 10122000          |
+| 20150000          |
+| 20255000          |
+| 20345000          |
+| 50022000          |
++-------------------+
+8 rows in set (0.07 sec)
+
+mysql> select concat(empid,sal) as id_sal from emp;
++----------+
+| id_sal   |
++----------+
+| 110000   |
+| 220000   |
+| 10020000 |
+| 10122000 |
+| 20150000 |
+| 20255000 |
+| 20345000 |
+| 50022000 |
++----------+
+8 rows in set (0.00 sec)
+
+mysql> select concat(empid,'_',sal) as id_sal from emp;
++-----------+
+| id_sal    |
++-----------+
+| 1_10000   |
+| 2_20000   |
+| 100_20000 |
+| 101_22000 |
+| 201_50000 |
+| 202_55000 |
+| 203_45000 |
+| 500_22000 |
++-----------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select upper(name) from emp;
++-------------+
+| upper(name) |
++-------------+
+| A           |
+| B           |
+| B           |
+| D           |
+| JADEJA      |
+| DHONI       |
+| VIRAT       |
+| D           |
++-------------+
+8 rows in set (0.10 sec)
+
+mysql> select reverse(name) from emp;
++---------------+
+| reverse(name) |
++---------------+
+| a             |
+| b             |
+| b             |
+| d             |
+| ajedaj        |
+| inohd         |
+| tariv         |
+| d             |
++---------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select sum(sal) from emp;
++----------+
+| sum(sal) |
++----------+
+|   244000 |
++----------+
+1 row in set (0.14 sec)
+
+mysql> select sum(sal),avg(sal) from emp;
++----------+------------+
+| sum(sal) | avg(sal)   |
++----------+------------+
+|   244000 | 30500.0000 |
++----------+------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(sal),avg(sal),min(sal),max(sal) from emp;
++----------+------------+----------+----------+
+| sum(sal) | avg(sal)   | min(sal) | max(sal) |
++----------+------------+----------+----------+
+|   244000 | 30500.0000 |    10000 |    55000 |
++----------+------------+----------+----------+
+1 row in set (0.07 sec)
+
+mysql> select * from emp where sal=max(sal);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select * from emp where sal=(select max(sal) from emp);
++-------+-------+-------+
+| empid | name  | sal   |
++-------+-------+-------+
+|   202 | dhoni | 55000 |
++-------+-------+-------+
+1 row in set (0.05 sec)
+
+mysql> select * from emp where sal=(select min(sal) from emp);
++-------+------+-------+
+| empid | name | sal   |
++-------+------+-------+
+|     1 | a    | 10000 |
++-------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select * from students;
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    111 | monu   |   500 |
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
+|    501 | sonu   |   700 |
+|    555 | ajay   |   800 |
+|    556 | vijay  |   800 |
++--------+--------+-------+
+7 rows in set (0.19 sec)
+
+mysql> select count(name),count(marks) from students;
++-------------+--------------+
+| count(name) | count(marks) |
++-------------+--------------+
+|           7 |            6 |
++-------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> create table txn(txn_date date,txn_time time,txn_datetime datetime);
+Query OK, 0 rows affected (2.08 sec)
+
+mysql>
+mysql> insert into txn values('2021-4-26','10:30:20','2021-5-10 5:50:20');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
++------------+----------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into txn values('2021/4/26','10#30#20','2021-5-10 5:50:20');
+ERROR 1292 (22007): Incorrect time value: '10#30#20' for column 'txn_time' at row 1
+mysql> insert into txn values('2021/4/26','10:30:20','2021-5-10 5:50:20');
+Query OK, 1 row affected (0.21 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
++------------+----------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into txn values('2021#4#26','10:30:20','2021-5-10 5:50:20');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
++------------+----------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into txn values('2021/4/26','10/3/20','2021-5-10 5:50:20');
+ERROR 1292 (22007): Incorrect time value: '10/3/20' for column 'txn_time' at row 1
+mysql> insert into txn values('21-5-26','10:30:20','2021-5-10 5:50:20');
+Query OK, 1 row affected (0.22 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-05-26 | 10:30:20 | 2021-05-10 05:50:20 |
++------------+----------+---------------------+
+4 rows in set (0.07 sec)
+
+mysql> insert into txn values('70-4-26','10:30:20','2021-5-10 5:50:20');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-05-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1970-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
++------------+----------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into txn values('71-4-26','10:30:20','2021-5-10 5:50:20');
+Query OK, 1 row affected (0.29 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-05-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1970-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1971-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
++------------+----------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into txn values('69-4-26','10:30:20','2021-5-10 5:50:20');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-05-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1970-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1971-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2069-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
++------------+----------+---------------------+
+7 rows in set (0.00 sec)
+
+mysql> insert into txn values(19500310,'10:30:20','2021-5-10 5:50:20');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-05-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1970-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1971-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2069-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1950-03-10 | 10:30:20 | 2021-05-10 05:50:20 |
++------------+----------+---------------------+
+8 rows in set (0.00 sec)
+
+mysql> insert into txn values(curdate(),curtime(),now());
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-05-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1970-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1971-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2069-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1950-03-10 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:38:45 | 2021-04-26 10:38:45 |
++------------+----------+---------------------+
+9 rows in set (0.00 sec)
+
+mysql> insert into txn values(curdate(),curtime(),now());
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from txn;
++------------+----------+---------------------+
+| txn_date   | txn_time | txn_datetime        |
++------------+----------+---------------------+
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-05-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1970-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1971-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2069-04-26 | 10:30:20 | 2021-05-10 05:50:20 |
+| 1950-03-10 | 10:30:20 | 2021-05-10 05:50:20 |
+| 2021-04-26 | 10:38:45 | 2021-04-26 10:38:45 |
+| 2021-04-26 | 10:39:10 | 2021-04-26 10:39:10 |
++------------+----------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.06 sec)
+
+mysql> create table newemp as select * from emp;
+Query OK, 8 rows affected (2.42 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> select * from newemp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> create table newemp2 as select empid,sal from emp;
+Query OK, 8 rows affected (0.58 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> select * from newemp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select * from newemp2;
++-------+-------+
+| empid | sal   |
++-------+-------+
+|     1 | 10000 |
+|     2 | 20000 |
+|   100 | 20000 |
+|   101 | 22000 |
+|   201 | 50000 |
+|   202 | 55000 |
+|   203 | 45000 |
+|   500 | 22000 |
++-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> create table newemp3 as select empid,sal from emp  where sal>=30000;
+Query OK, 3 rows affected (1.11 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from newemp3;
++-------+-------+
+| empid | sal   |
++-------+-------+
+|   201 | 50000 |
+|   202 | 55000 |
+|   203 | 45000 |
++-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create view empview as select * from emp;
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> select * from empview;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.08 sec)
+
+mysql> delete from empview where empid=1;
+Query OK, 1 row affected (0.31 sec)
+
+mysql> select * from empview;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select * from newemp;
++-------+--------+-------+
+| empid | name   | sal   |
++-------+--------+-------+
+|     1 | a      | 10000 |
+|     2 | b      | 20000 |
+|   100 | b      | 20000 |
+|   101 | d      | 22000 |
+|   201 | jadeja | 50000 |
+|   202 | dhoni  | 55000 |
+|   203 | virat  | 45000 |
+|   500 | d      | 22000 |
++-------+--------+-------+
+8 rows in set (0.07 sec)
+
+mysql> select * from clg;
++------+------+
+| roll | name |
++------+------+
+|    1 | a    |
+|    2 | b    |
+|    3 | c    |
++------+------+
+3 rows in set (0.22 sec)
+
+mysql> select * from hstl;
++--------+--------+
+| rollno | roomno |
++--------+--------+
+|      1 |    100 |
+|      3 |    300 |
++--------+--------+
+2 rows in set (0.13 sec)
+
+mysql> alter table hstl drop foreign key(rollno);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(rollno)' at line 1
+mysql> alter table hstl drop foreign key;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table hstl drop foreign key rollno;
+ERROR 1091 (42000): Can't DROP 'rollno'; check that column/key exists
+mysql> create table show hstl;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show hstl' at line 1
+mysql> desc hstl;
++--------+------+------+-----+---------+-------+
+| Field  | Type | Null | Key | Default | Extra |
++--------+------+------+-----+---------+-------+
+| rollno | int  | YES  | MUL | NULL    |       |
+| roomno | int  | YES  |     | NULL    |       |
++--------+------+------+-----+---------+-------+
+2 rows in set (0.30 sec)
+
+mysql> select * from information_schema.table_constraints where table_name=hstl;
+ERROR 1054 (42S22): Unknown column 'hstl' in 'where clause'
+mysql> select * from information_schema.table_constraints where table_name='hstl';
++--------------------+-------------------+-----------------+--------------+------------+-----------------+----------+
+| CONSTRAINT_CATALOG | CONSTRAINT_SCHEMA | CONSTRAINT_NAME | TABLE_SCHEMA | TABLE_NAME | CONSTRAINT_TYPE | ENFORCED |
++--------------------+-------------------+-----------------+--------------+------------+-----------------+----------+
+| def                | 10to1130          | hstl_ibfk_1     | 10to1130     | hstl       | FOREIGN KEY     | YES      |
++--------------------+-------------------+-----------------+--------------+------------+-----------------+----------+
+1 row in set (0.00 sec)
+
+mysql> SHOW CREATE TABLE yourTableName
+    ->
+    -> ;
+ERROR 1146 (42S02): Table '10to1130.yourtablename' doesn't exist
+mysql> show create table hstl;
++-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                              |
++-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| hstl  | CREATE TABLE `hstl` (
+  `rollno` int DEFAULT NULL,
+  `roomno` int DEFAULT NULL,
+  KEY `rollno` (`rollno`),
+  CONSTRAINT `hstl_ibfk_1` FOREIGN KEY (`rollno`) REFERENCES `clg` (`roll`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table hstl drop foreign key hstl_ibfk_1;
+Query OK, 0 rows affected (0.36 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into hstl values(10,2001);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> select * from hstl;
++--------+--------+
+| rollno | roomno |
++--------+--------+
+|      1 |    100 |
+|      3 |    300 |
+|     10 |   2001 |
++--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from clg;
++------+------+
+| roll | name |
++------+------+
+|    1 | a    |
+|    2 | b    |
+|    3 | c    |
++------+------+
+3 rows in set (0.13 sec)
+
+mysql> select * from hstl;
++--------+--------+
+| rollno | roomno |
++--------+--------+
+|      1 |    100 |
+|      3 |    300 |
+|     10 |   2001 |
++--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from clg inner join hstl on clg.roll=hstl.rollno;
++------+------+--------+--------+
+| roll | name | rollno | roomno |
++------+------+--------+--------+
+|    1 | a    |      1 |    100 |
+|    3 | c    |      3 |    300 |
++------+------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select clg.roll,clg.name,hstl.roomno from clg inner join hstl on clg.roll=hstl.rollno;
++------+------+--------+
+| roll | name | roomno |
++------+------+--------+
+|    1 | a    |    100 |
+|    3 | c    |    300 |
++------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select clg.roll,hstl.roomno,clg.name from clg inner join hstl on clg.roll=hstl.rollno;
++------+--------+------+
+| roll | roomno | name |
++------+--------+------+
+|    1 |    100 | a    |
+|    3 |    300 | c    |
++------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select c.roll,h.roomno,c.name from clg as c inner join hstl as h on c.roll=h.rollno;
++------+--------+------+
+| roll | roomno | name |
++------+--------+------+
+|    1 |    100 | a    |
+|    3 |    300 | c    |
++------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select clg.roll,hstl.roomno,clg.name from clg left join hstl on clg.roll=hstl.rollno;
++------+--------+------+
+| roll | roomno | name |
++------+--------+------+
+|    1 |    100 | a    |
+|    2 |   NULL | b    |
+|    3 |    300 | c    |
++------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> select clg.roll,hstl.roomno,clg.name from clg right join hstl on clg.roll=hstl.rollno;
++------+--------+------+
+| roll | roomno | name |
++------+--------+------+
+|    1 |    100 | a    |
+|    3 |    300 | c    |
+| NULL |   2001 | NULL |
++------+--------+------+
+3 rows in set (0.10 sec)
+
+mysql> select clg.roll,hstl.roomno,clg.name from clg full join hstl on clg.roll=hstl.rollno;
+ERROR 1054 (42S22): Unknown column 'clg.roll' in 'field list'
+mysql> select clg.roll,hstl.roomno,clg.name from clg left join hstl on clg.roll=hstl.rollno union select clg.roll,hstl.roomno,clg.name from clg right join hstl on clg.roll=hstl.rollno;
++------+--------+------+
+| roll | roomno | name |
++------+--------+------+
+|    1 |    100 | a    |
+|    2 |   NULL | b    |
+|    3 |    300 | c    |
+| NULL |   2001 | NULL |
++------+--------+------+
+4 rows in set (0.07 sec)
+
+mysql>
