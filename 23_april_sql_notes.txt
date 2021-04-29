@@ -1,0 +1,560 @@
+mysql: [Warning] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe: ignoring option '--no-beep' due to invalid value ''.
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use 10to1130;
+Database changed
+mysql> create table student(roll int primary key,name varchar(10),marks int);
+Query OK, 0 rows affected (2.15 sec)
+
+mysql> create table student2(roll int,name varchar(10),marks int,primary key(roll));
+Query OK, 0 rows affected (0.70 sec)
+
+mysql> insert into student values(501,'sonu',700);
+Query OK, 1 row affected (0.40 sec)
+
+mysql> insert into student values(101,'sonu',800);
+Query OK, 1 row affected (0.31 sec)
+
+mysql> insert into student values(111,'monu',500);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert into student values(111,'chintu',550);
+ERROR 1062 (23000): Duplicate entry '111' for key 'student.PRIMARY'
+mysql> select * from student;
++------+------+-------+
+| roll | name | marks |
++------+------+-------+
+|  101 | sonu |   800 |
+|  111 | monu |   500 |
+|  501 | sonu |   700 |
++------+------+-------+
+3 rows in set (0.07 sec)
+
+mysql> alter table student add branch varchar(10);
+Query OK, 0 rows affected (1.90 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+------+-------+--------+
+| roll | name | marks | branch |
++------+------+-------+--------+
+|  101 | sonu |   800 | NULL   |
+|  111 | monu |   500 | NULL   |
+|  501 | sonu |   700 | NULL   |
++------+------+-------+--------+
+3 rows in set (0.02 sec)
+
+mysql> update table student set branch='CS';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table student set branch='CS'' at line 1
+mysql> update student set branch='CS';
+Query OK, 3 rows affected (0.10 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * from student;
++------+------+-------+--------+
+| roll | name | marks | branch |
++------+------+-------+--------+
+|  101 | sonu |   800 | CS     |
+|  111 | monu |   500 | CS     |
+|  501 | sonu |   700 | CS     |
++------+------+-------+--------+
+3 rows in set (0.07 sec)
+
+mysql> update student set branch='EC' where roll=111;
+Query OK, 1 row affected (0.18 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++------+------+-------+--------+
+| roll | name | marks | branch |
++------+------+-------+--------+
+|  101 | sonu |   800 | CS     |
+|  111 | monu |   500 | EC     |
+|  501 | sonu |   700 | CS     |
++------+------+-------+--------+
+3 rows in set (0.02 sec)
+
+mysql> alter table student drop branch;
+Query OK, 0 rows affected (2.58 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+------+-------+
+| roll | name | marks |
++------+------+-------+
+|  101 | sonu |   800 |
+|  111 | monu |   500 |
+|  501 | sonu |   700 |
++------+------+-------+
+3 rows in set (0.14 sec)
+
+mysql> alter table student drop primary key;
+Query OK, 3 rows affected (3.54 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+------+-------+
+| roll | name | marks |
++------+------+-------+
+|  101 | sonu |   800 |
+|  111 | monu |   500 |
+|  501 | sonu |   700 |
++------+------+-------+
+3 rows in set (0.08 sec)
+
+mysql> alter table student add primary key(roll);
+Query OK, 0 rows affected (2.54 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student change column roll rollno int;
+Query OK, 0 rows affected (0.23 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    111 | monu |   500 |
+|    501 | sonu |   700 |
++--------+------+-------+
+3 rows in set (0.03 sec)
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | int         | NO   | PRI | NULL    |       |
+| name   | varchar(10) | YES  |     | NULL    |       |
+| marks  | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.33 sec)
+
+mysql> alter table student change column rollno roll;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select * from student;
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    111 | monu |   500 |
+|    501 | sonu |   700 |
++--------+------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student rename to students;
+Query OK, 0 rows affected (1.05 sec)
+
+mysql> select * from student;
+ERROR 1146 (42S02): Table '10to1130.student' doesn't exist
+mysql> select * from students;
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    111 | monu |   500 |
+|    501 | sonu |   700 |
++--------+------+-------+
+3 rows in set (0.17 sec)
+
+mysql> insert into student values(121,'monu',-500);
+ERROR 1146 (42S02): Table '10to1130.student' doesn't exist
+mysql> insert into students values(121,'monu',-500);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from students;
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    111 | monu |   500 |
+|    121 | monu |  -500 |
+|    501 | sonu |   700 |
++--------+------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into students values(122,'monu',5000);
+Query OK, 1 row affected (0.18 sec)
+
+mysql> select * from students;
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    111 | monu |   500 |
+|    121 | monu |  -500 |
+|    122 | monu |  5000 |
+|    501 | sonu |   700 |
++--------+------+-------+
+5 rows in set (0.00 sec)
+
+mysql> delete from students where rollno=121 or rollno=122;
+Query OK, 2 rows affected (0.13 sec)
+
+mysql> select * from students;
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    111 | monu |   500 |
+|    501 | sonu |   700 |
++--------+------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table students add check(marks>0 and marks<=1000);
+Query OK, 3 rows affected (3.62 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into students values(122,'monu',5000);
+ERROR 3819 (HY000): Check constraint 'students_chk_1' is violated.
+mysql> insert into students(rollno,name) values(211,'chintu');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> select * from students;
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    111 | monu   |   500 |
+|    211 | chintu |  NULL |
+|    501 | sonu   |   700 |
++--------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table students add default marks 500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default marks 500' at line 1
+mysql> alter table students add default(marks) 500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default(marks) 500' at line 1
+mysql> alter table students alter marks set default 500;
+Query OK, 0 rows affected (1.21 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into students(rollno,name) values(212,'pintu');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from students;
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    111 | monu   |   500 |
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
+|    501 | sonu   |   700 |
++--------+--------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table students3(did int,name varchar(10),course varchar(10),primary key(did,name));
+Query OK, 0 rows affected (0.64 sec)
+
+mysql> insert into students3 values(100,'a','python');
+Query OK, 1 row affected (0.32 sec)
+
+mysql> insert into students3 values(100,'b','python');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into students3 values(101,'a','python');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into students3 values(101,'a','java');
+ERROR 1062 (23000): Duplicate entry '101-a' for key 'students3.PRIMARY'
+mysql> create table clg(roll int primary key,name varchar);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table clg(roll int primary key,name varchar(10));
+Query OK, 0 rows affected (2.29 sec)
+
+mysql> create table hstl(rollno int,roomno int,foreign key(rollno) reference clg(roll));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference clg(roll))' at line 1
+mysql> create table hstl(rollno int,roomno int,foreign key(rollno) references clg(roll));
+Query OK, 0 rows affected (1.63 sec)
+
+mysql> insert into hstl values(1,100);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`10to1130`.`hstl`, CONSTRAINT `hstl_ibfk_1` FOREIGN KEY (`rollno`) REFERENCES `clg` (`roll`))
+mysql> insert into clg values(1,'a');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into clg values(2,'b');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into clg values(3,'c');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into hstl values(1,100);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert into hstl values(3,300);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into hstl values(4,310);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`10to1130`.`hstl`, CONSTRAINT `hstl_ibfk_1` FOREIGN KEY (`rollno`) REFERENCES `clg` (`roll`))
+mysql> select * from clg;
++------+------+
+| roll | name |
++------+------+
+|    1 | a    |
+|    2 | b    |
+|    3 | c    |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from hstl;
++--------+--------+
+| rollno | roomno |
++--------+--------+
+|      1 |    100 |
+|      3 |    300 |
++--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> create table emp(empid int primary key auto_increment,name varchar(10),sal int);
+Query OK, 0 rows affected (2.07 sec)
+
+mysql> insert into emp(name,sal) values('a',10000);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> select * from emp;
++-------+------+-------+
+| empid | name | sal   |
++-------+------+-------+
+|     1 | a    | 10000 |
++-------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into emp(name,sal) values('b',20000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from emp;
++-------+------+-------+
+| empid | name | sal   |
++-------+------+-------+
+|     1 | a    | 10000 |
+|     2 | b    | 20000 |
++-------+------+-------+
+2 rows in set (0.07 sec)
+
+mysql> insert into emp values(100,'b',20000);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from emp;
++-------+------+-------+
+| empid | name | sal   |
++-------+------+-------+
+|     1 | a    | 10000 |
+|     2 | b    | 20000 |
+|   100 | b    | 20000 |
++-------+------+-------+
+3 rows in set (0.06 sec)
+
+mysql> insert into emp(name,sal) values('d',22000);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from emp;
++-------+------+-------+
+| empid | name | sal   |
++-------+------+-------+
+|     1 | a    | 10000 |
+|     2 | b    | 20000 |
+|   100 | b    | 20000 |
+|   101 | d    | 22000 |
++-------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table emp alter empid set default 500;
+Query OK, 0 rows affected (1.51 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into emp(name,sal) values('d',22000);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> select * from emp;
++-------+------+-------+
+| empid | name | sal   |
++-------+------+-------+
+|     1 | a    | 10000 |
+|     2 | b    | 20000 |
+|   100 | b    | 20000 |
+|   101 | d    | 22000 |
+|   500 | d    | 22000 |
++-------+------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into emp(name,sal) values('d',22000);
+ERROR 1062 (23000): Duplicate entry '500' for key 'emp.PRIMARY'
+mysql> select * from students;
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    111 | monu   |   500 |
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
+|    501 | sonu   |   700 |
++--------+--------+-------+
+5 rows in set (0.09 sec)
+
+mysql> select * from students where marks>=600 or marks<=800;
++--------+-------+-------+
+| rollno | name  | marks |
++--------+-------+-------+
+|    101 | sonu  |   800 |
+|    111 | monu  |   500 |
+|    212 | pintu |   500 |
+|    501 | sonu  |   700 |
++--------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from students where marks>=600 and marks<=800;
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    501 | sonu |   700 |
++--------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students where marks between 600 and 800;
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    501 | sonu |   700 |
++--------+------+-------+
+2 rows in set (0.11 sec)
+
+mysql> select * from students;
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    111 | monu   |   500 |
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
+|    501 | sonu   |   700 |
++--------+--------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from students where rollno=100 or rollno=101 or rollno=210 or rollno=211 or rollno=500;
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    211 | chintu |  NULL |
++--------+--------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students where rollno in (100,101,210,211,500);
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    211 | chintu |  NULL |
++--------+--------+-------+
+2 rows in set (0.01 sec)
+
+mysql> select * from students;
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    111 | monu   |   500 |
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
+|    501 | sonu   |   700 |
++--------+--------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into students values(555,'ajay',800);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> insert into students values(556,'vijay',800);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from students;
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    111 | monu   |   500 |
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
+|    501 | sonu   |   700 |
+|    555 | ajay   |   800 |
+|    556 | vijay  |   800 |
++--------+--------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> cls
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'cls' at line 1
+mysql> select * from students where name like '%u';
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    101 | sonu   |   800 |
+|    111 | monu   |   500 |
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
+|    501 | sonu   |   700 |
++--------+--------+-------+
+5 rows in set (0.08 sec)
+
+mysql> select * from students where name like '%y';
++--------+-------+-------+
+| rollno | name  | marks |
++--------+-------+-------+
+|    555 | ajay  |   800 |
+|    556 | vijay |   800 |
++--------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students where name like '%tu';
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
++--------+--------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students where name like '_i%';
++--------+-------+-------+
+| rollno | name  | marks |
++--------+-------+-------+
+|    212 | pintu |   500 |
+|    556 | vijay |   800 |
++--------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students where rollno like '2%';
++--------+--------+-------+
+| rollno | name   | marks |
++--------+--------+-------+
+|    211 | chintu |  NULL |
+|    212 | pintu  |   500 |
++--------+--------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students where rollno like '1%';
++--------+------+-------+
+| rollno | name | marks |
++--------+------+-------+
+|    101 | sonu |   800 |
+|    111 | monu |   500 |
++--------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql>
